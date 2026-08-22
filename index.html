@@ -139,6 +139,24 @@
   <footer>
     © 2026 FutEsport Wallpapers
   </footer>
+<script>
+document.querySelectorAll('.download').forEach(link => {
+  link.addEventListener('click', async function(e) {
+    e.preventDefault();
 
+    const response = await fetch(this.href);
+    const blob = await response.blob();
+
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'valorant-wallpaper.png';
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    URL.revokeObjectURL(url);
+  });
+});
+</script>
 </body>
 </html>
